@@ -13,8 +13,12 @@ class CreateAuteursTable extends Migration
      */
     public function up()
     {
-        Schema::create('auteurs', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('Auteurs', function (Blueprint $table) {
+            $table->increments('auteur_id');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
