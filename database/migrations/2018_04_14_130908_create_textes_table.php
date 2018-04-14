@@ -13,8 +13,12 @@ class CreateTextesTable extends Migration
      */
     public function up()
     {
-        Schema::create('textes', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('Textes', function (Blueprint $table) {
+            $table->increments('texte_id');
+            $table->string('nom');
+            $table->integer('cours_id')->unsigned();
+            $table->foreign("cours_id")->references("cours_id")->on("Cours");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

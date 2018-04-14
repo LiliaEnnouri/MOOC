@@ -18,8 +18,12 @@ class CreateImagesTable extends Migration
             $table->string('nom');
             $table->string('titre');
             $table->string('is_profile');
+            $table->integer('cours_id')->unsigned();
+            $table->foreign("cours_id")->references("cours_id")->on("Cours");
             $table->softDeletes();
             $table->timestamps();
+
+
         });
     }
 
