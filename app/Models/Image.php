@@ -9,7 +9,7 @@ class Image extends Model
 {
     use SoftDeletes;
     protected $primaryKey = 'image_id';
-    protected $table = 'Image';
+    protected $table = 'Images';
     protected $fillable = ['nom', 'is_profile', 'cours_id'];
     public $timestamps = true;
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];

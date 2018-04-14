@@ -9,7 +9,7 @@ class Auteur extends Model
 {
     use SoftDeletes;
     protected $primaryKey = 'auteur_id';
-    protected $table = 'Auteur';
+    protected $table = 'Auteurs';
     protected $fillable = ['nom', 'prenom', 'description'];
     public $timestamps = true;
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];

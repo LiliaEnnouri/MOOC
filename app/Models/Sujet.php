@@ -9,7 +9,7 @@ class Sujet extends Model
 {
     use SoftDeletes;
     protected $primaryKey = 'sujet_id';
-    protected $table = 'Sujet';
+    protected $table = 'Sujets';
     protected $fillable = ['label','description'];
     public $timestamps = true;
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];

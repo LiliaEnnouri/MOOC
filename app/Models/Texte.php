@@ -9,7 +9,7 @@ class Texte extends Model
 {
     use SoftDeletes;
     protected $primaryKey = 'texte_id';
-    protected $table = 'Texte';
+    protected $table = 'Textes';
     protected $fillable = ['nom', 'cours_id'];
     public $timestamps = true;
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];

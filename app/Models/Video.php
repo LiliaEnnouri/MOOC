@@ -9,7 +9,7 @@ class Video extends Model
 {
     use SoftDeletes;
     protected $primaryKey = 'video_id';
-    protected $table = 'Video';
+    protected $table = 'Videos';
     protected $fillable = ['nom','titre','description', 'cours_id'];
     public $timestamps = true;
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
