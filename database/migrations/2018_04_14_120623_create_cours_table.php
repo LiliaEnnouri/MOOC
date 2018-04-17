@@ -23,8 +23,8 @@ class CreateCoursTable extends Migration
             $table->integer('auteur_id')->unsigned();
             $table->integer('sujet_id')->unsigned();
 
-            $table->foreign("auteur_id")->references("auteur_id")->on("Auteur");
-            $table->foreign("sujet_id")->references("sujet_id")->on("Sujet");
+            $table->foreign("auteur_id")->references("auteur_id")->on("Auteurs");
+            $table->foreign("sujet_id")->references("sujet_id")->on("Sujets");
 
             $table->softDeletes();
             $table->timestamps();
