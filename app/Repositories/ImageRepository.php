@@ -2,28 +2,34 @@
 
 namespace App\Repositories;
 
-use App\Auteur;
-use App\Image;
-use Illuminate\Http\Request;
+use App\Models\Image;
+use InfyOm\Generator\Common\BaseRepository;
 
-class ImageRepository
+/**
+ * Class ImageRepository
+ * @package App\Repositories
+ * @version April 19, 2018, 9:01 am UTC
+ *
+ * @method Image findWithoutFail($id, $columns = ['*'])
+ * @method Image find($id, $columns = ['*'])
+ * @method Image first($columns = ['*'])
+*/
+class ImageRepository extends BaseRepository
 {
-    public function getAll()
-    {
-        return Image::get();
-    }
+    /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'nom',
+        'is_profile',
+        'cours_id'
+    ];
 
-    public function addImage(Request $request)
+    /**
+     * Configure the Model
+     **/
+    public function model()
     {
-        //Create an object
-        $image = new Image();
-        //Filling the attributes
-        $image->image_id = $request->input("image_id");
-        $image->nom = $request->input("nom");
-        $image->is_profile = $request->input("cours_id");
-        $image->save();
-        return $image;
+        return Image::class;
     }
-
 }
-

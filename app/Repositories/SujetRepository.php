@@ -2,16 +2,32 @@
 
 namespace App\Repositories;
 
-use App\Auteur;
-use App\Sujet;
-use Illuminate\Http\Request;
+use App\Models\Sujet;
+use InfyOm\Generator\Common\BaseRepository;
 
-class SujetRepository
+/**
+ * Class SujetRepository
+ * @package App\Repositories
+ * @version April 19, 2018, 8:46 am UTC
+ *
+ * @method Sujet findWithoutFail($id, $columns = ['*'])
+ * @method Sujet find($id, $columns = ['*'])
+ * @method Sujet first($columns = ['*'])
+*/
+class SujetRepository extends BaseRepository
 {
-    public function getAll()
+    /**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'label'
+    ];
+
+    /**
+     * Configure the Model
+     **/
+    public function model()
     {
-        return Sujet::get();
+        return Sujet::class;
     }
-
 }
-

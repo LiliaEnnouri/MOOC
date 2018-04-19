@@ -1,21 +1,48 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * Class Sujet
+ * @package App\Models
+ * @version April 19, 2018, 8:46 am UTC
+ *
+ * @property string label
+ */
 class Sujet extends Model
 {
     use SoftDeletes;
-    protected $primaryKey = 'sujet_id';
-    protected $table = 'Sujets';
-    protected $fillable = ['label','description'];
-    public $timestamps = true;
-    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
-    public function cours()
-    {
-        return $this->hasMany('\app\Models\Cours','cours_id','cours_id');
-    }
+    public $table = 'sujets';
+    
+
+    protected $dates = ['deleted_at'];
+
+
+    public $fillable = [
+        'label'
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'label' => 'string'
+    ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'label' => 'description string text'
+    ];
+
+    
 }

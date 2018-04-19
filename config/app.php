@@ -151,6 +151,7 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
         \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class,
+        Unisharp\FileApi\FileApiServiceProvider::class,
 
         /*
          * Package Service Providers...

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8a06f1a172c4cec782d28c860bda2d6",
+    "content-hash": "c00210d3008e905fe099863bda62c6ed",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2869,6 +2869,53 @@
             "time": "2017-11-27T11:13:29+00:00"
         },
         {
+            "name": "unisharp/laravel-fileapi",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/UniSharp/laravel-fileapi.git",
+                "reference": "7f38fb73fe2b7295fb2cf508198f05b3b9dd646b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/UniSharp/laravel-fileapi/zipball/7f38fb73fe2b7295fb2cf508198f05b3b9dd646b",
+                "reference": "7f38fb73fe2b7295fb2cf508198f05b3b9dd646b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "illuminate/support": ">=5.0.0",
+                "league/flysystem": ">=1.0",
+                "php": ">=5.5.0",
+                "symfony/http-foundation": ">=2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Unisharp\\FileApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "UniSharp Ltd. (Composer Package Maintainer)",
+                    "homepage": "http://www.unisharp.com"
+                }
+            ],
+            "description": "Laravel File API - Handle Files with Laravel Storage",
+            "keywords": [
+                "api",
+                "file",
+                "fileapi",
+                "laravel",
+                "storage"
+            ],
+            "time": "2017-11-14T02:42:59+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v2.4.0",
             "source": {
@@ -4725,8 +4772,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "infyomlabs/laravel-generator": 20,
-        "infyomlabs/adminlte-templates": 20
+        "infyomlabs/adminlte-templates": 20,
+        "infyomlabs/laravel-generator": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

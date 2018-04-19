@@ -24,3 +24,15 @@ Route::group(['prefix' => 'auteur'], function () {
 Route::group(['prefix' => 'sujet'], function () {
     Route::get('/', 'SujetController@getAll');
 });
+
+Route::resource('auteurs', 'AuteurAPIController');
+
+Route::resource('sujets', 'SujetAPIController');
+
+Route::resource('cours', 'CoursAPIController');
+
+Route::resource('images', 'ImageAPIController');
+
+Route::resource('textes', 'TexteAPIController');
+
+Route::resource('videos', 'VideoAPIController');
