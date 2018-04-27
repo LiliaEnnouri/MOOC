@@ -11,6 +11,7 @@ use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Unisharp\FileApi\FileApi;
 
 /**
  * Class VideoController
@@ -126,4 +127,39 @@ class VideoAPIController extends AppBaseController
 
         return $this->sendResponse($id, 'Video deleted successfully');
     }
+
+
+    /**
+     * Store a newly created Image in storage.
+     * POST /images/upload
+     *
+     * @param CreateVideoAPIRequest $request
+     *
+     * @return Response
+     */
+    public function uploadVideo(Request $request)
+    {
+
+        $this->validate($request, [
+            'video' => 'required|mimes:mp4,x-flv,x-mpegURL,MP2T,3gpp,quicktime,x-msvideo,x-ms-wmv'
+        ]);
+
+        $fa_cours = new FileApi('/videos/cours/'); # initiate another instance
+
+
+        $file=$request->file('video');
+
+        $image_names =array();
+
+        $image_nom = 'video_' . uniqid();
+
+        $fa_cours->save($file, $image_nom); // => wfj412.jpg
+        array_push($image_names,$image_nom);
+
+        return response()->json(["videos" => $image_names], 200);
+
+
+    }
+
+
 }

@@ -11,6 +11,7 @@ use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Unisharp\FileApi\FileApi;
 
 /**
  * Class ImageController
@@ -126,4 +127,41 @@ class ImageAPIController extends AppBaseController
 
         return $this->sendResponse($id, 'Image deleted successfully');
     }
+
+    /**
+     * Store a newly created Image in storage.
+     * POST /images/upload
+     *
+     * @param CreateImageAPIRequest $request
+     *
+     * @return Response
+     */
+    public function uploadImage(Request $request)
+    {
+
+        $this->validate($request, [
+            'image' => 'image|required'
+        ]);
+
+        $fa_cours = new FileApi('/images/cours/'); # initiate another instance
+
+
+        $file=$request->file('image');
+
+        $image_names =array();
+
+        $image_nom = 'image_' . uniqid();
+
+         $fa_cours->save($file, $image_nom); // => wfj412.jpg
+          array_push($image_names,$image_nom);
+
+        return response()->json(["images" => $image_names], 200);
+
+
+        }
+
+
+
+
+
 }

@@ -13,21 +13,21 @@ class AuteurSeeder extends Seeder
     {
         DB::table('Auteurs')->delete();
         DB::table('Auteurs')->insert([
-            'auteur_id' => 1,
+            'id' => 1,
             'nom' => 'nom1',
             'prenom' => 'prenom1',
             'description' => 'Brief thing on cvBrief thing on cvBrief thing on cv',
         ]);
 
         DB::table('Auteurs')->insert([
-            'auteur_id' => 2,
+            'id' => 2,
             'nom' => 'nom2',
             'prenom' => 'prenom2',
             'description' => 'Brieazdazdf thing on cvBriazdazdazdef thing on cvBrief thing on cv',
         ]);
 
         DB::table('Auteurs')->insert([
-            'auteur_id' => 3,
+            'id' => 3,
             'nom' => 'nom3',
             'prenom' => 'prenom3',
             'description' => 'dzajddd thing on cvBrief thing on cvBrief thing on cv',

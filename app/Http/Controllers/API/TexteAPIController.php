@@ -11,6 +11,7 @@ use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Unisharp\FileApi\FileApi;
 
 /**
  * Class TexteController
@@ -126,4 +127,38 @@ class TexteAPIController extends AppBaseController
 
         return $this->sendResponse($id, 'Texte deleted successfully');
     }
+
+    /**
+     * Store a newly created Image in storage.
+     * POST /images/upload
+     *
+     * @param CreateTexteAPIRequest $request
+     *
+     * @return Response
+     */
+    public function uploadTexte(Request $request)
+    {
+
+        $this->validate($request, [
+            'texte' => 'mimes:pdf|required'
+        ]);
+
+        $fa_cours = new FileApi('/textes/cours/'); # initiate another instance
+
+
+        $file=$request->file('texte');
+
+        $image_names =array();
+
+        $image_nom = 'texte_' . uniqid();
+
+        $fa_cours->save($file, $image_nom); // => wfj412.jpg
+
+        return response()->json(["texte" => $image_nom], 200);
+
+
+
+    }
+
+
 }

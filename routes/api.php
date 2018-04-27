@@ -24,6 +24,16 @@ Route::group(['prefix' => 'auteur'], function () {
 Route::group(['prefix' => 'sujet'], function () {
     Route::get('/', 'SujetController@getAll');
 });
+Route::group(['prefix' => 'images'], function () {
+    Route::post('/upload', 'ImageAPIController@uploadImage');
+});
+Route::group(['prefix' => 'videos'], function () {
+    Route::post('/upload', 'VideoApiController@uploadVideo');
+});
+
+Route::group(['prefix' => 'textes'], function () {
+    Route::post('/upload', 'TexteAPIController@uploadTexte');
+});
 
 Route::resource('auteurs', 'AuteurAPIController');
 

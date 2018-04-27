@@ -11,6 +11,7 @@ use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use \Unisharp\FileApi\FileApi;
 
 /**
  * Class CoursController
@@ -39,8 +40,8 @@ class CoursAPIController extends AppBaseController
         $this->coursRepository->pushCriteria(new RequestCriteria($request));
         $this->coursRepository->pushCriteria(new LimitOffsetCriteria($request));
         $cours = $this->coursRepository->all();
+        return response()->json($cours);
 
-        return $this->sendResponse($cours->toArray(), 'Cours retrieved successfully');
     }
 
     /**
@@ -126,4 +127,11 @@ class CoursAPIController extends AppBaseController
 
         return $this->sendResponse($id, 'Cours deleted successfully');
     }
+
+//    public function uploadImage(Request $request)
+//    {
+//        $fa = new FileApi('images/cours/');
+//        $file = $fa->save($request->file('image'));
+//        return $this->sendResponse($file-> ,'Image Uploaded successfully');
+//    }
 }

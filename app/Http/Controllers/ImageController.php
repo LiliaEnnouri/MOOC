@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\ImageRepository;
 use Illuminate\Http\Request;
+use \Unisharp\FileApi\FileApi;
 
 class ImageController extends Controller
 {
@@ -21,15 +22,16 @@ class ImageController extends Controller
     //Uploading single picture
     public function uploadImage(Request $request)
     {
+
+
         $this->validate($request, [
             'file_data' => 'image|required'
         ]);
-        $file = $request->file('file_data');
-        //Validating the pictures using validator
-        $image_nom = 'image_' . uniqid() . "." . $file->getClientOriginalExtension();
-        //Creating the path
-        $storagePath = storage_path();
-        $file->move($storagePath, $image_nom);
+        $fa_cours = new FileApi('/images/cours/'); # initiate another instance
+        $image_nom = 'image_' . uniqid() . "." . $request->file('image');
+
+        $file = $fa_cours->save($request->file('image'),$image_nom); // => wfj412.jpg
+
         return response()->json(["image" => $image_nom], 200);
     }
 

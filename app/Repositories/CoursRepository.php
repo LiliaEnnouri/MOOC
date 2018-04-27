@@ -34,4 +34,10 @@ class CoursRepository extends BaseRepository
     {
         return Cours::class;
     }
+
+    public function all($columns = ['*'])
+    {
+
+        return Cours::with(['sujet','auteur'])->get();
+    }
 }

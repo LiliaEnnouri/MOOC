@@ -13,21 +13,18 @@ class SujetSeeder extends Seeder
     {
         DB::table('Sujets')->delete();
         DB::table('Sujets')->insert([
-            'sujet_id' => 1,
-            'label' => 'Informatique',
-            'description' => 'youll find info things here',
+            'id' => 1,
+            'label' => 'Informatique'
         ]);
 
         DB::table('Sujets')->insert([
-            'sujet_id' => 2,
-            'label' => 'Arts',
-            'description' => 'youll find Arty things here',
+            'id' => 2,
+            'label' => 'Arts'
         ]);
 
         DB::table('Sujets')->insert([
-            'sujet_id' => 3,
-            'label' => 'Comptabilité',
-            'description' => 'youll find compta things here',
+            'id' => 3,
+            'label' => 'Comptabilité'
         ]);
     }
 }
