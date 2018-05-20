@@ -140,13 +140,13 @@ class TexteAPIController extends AppBaseController
     {
 
         $this->validate($request, [
-            'texte' => 'mimes:pdf|required'
+            'file_data' => 'mimes:pdf|required'
         ]);
 
         $fa_cours = new FileApi('/textes/cours/'); # initiate another instance
 
 
-        $file=$request->file('texte');
+        $file=$request->file('file_data');
 
         $image_names =array();
 

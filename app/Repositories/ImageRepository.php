@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Image;
+use Illuminate\Http\Request;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
@@ -32,4 +33,18 @@ class ImageRepository extends BaseRepository
     {
         return Image::class;
     }
+
+
+    public function addImage($image_name, $cours_id, $is_profile)
+    {
+        //Create an object
+        $picture = new Image();
+        //Filling the attributes
+        $picture->cours_id = $cours_id;
+        $picture->nom = $image_name;
+        $picture->is_profile = $is_profile;
+        $picture->save();
+        return $picture;
+    }
+
 }

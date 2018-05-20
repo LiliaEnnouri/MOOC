@@ -141,13 +141,13 @@ class VideoAPIController extends AppBaseController
     {
 
         $this->validate($request, [
-            'video' => 'required|mimes:mp4,x-flv,x-mpegURL,MP2T,3gpp,quicktime,x-msvideo,x-ms-wmv'
+            'file_data' => 'required|mimes:mp4,x-flv,x-mpegURL,MP2T,3gpp,quicktime,x-msvideo,x-ms-wmv'
         ]);
 
         $fa_cours = new FileApi('/videos/cours/'); # initiate another instance
 
 
-        $file=$request->file('video');
+        $file=$request->file('file_data');
 
         $image_names =array();
 

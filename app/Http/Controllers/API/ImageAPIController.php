@@ -140,13 +140,13 @@ class ImageAPIController extends AppBaseController
     {
 
         $this->validate($request, [
-            'image' => 'image|required'
+            'file_data' => 'image|required'
         ]);
 
         $fa_cours = new FileApi('/images/cours/'); # initiate another instance
 
 
-        $file=$request->file('image');
+        $file=$request->file('file_data');
 
         $image_names =array();
 
@@ -155,7 +155,9 @@ class ImageAPIController extends AppBaseController
          $fa_cours->save($file, $image_nom); // => wfj412.jpg
           array_push($image_names,$image_nom);
 
-        return response()->json(["images" => $image_names], 200);
+        $filepath =  $image_nom ."." .$file->getClientOriginalExtension();
+
+        return response()->json(["picture" =>  $filepath ], 200);
 
 
         }

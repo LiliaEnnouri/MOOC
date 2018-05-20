@@ -6,6 +6,7 @@ use App\Http\Requests\API\CreateCoursAPIRequest;
 use App\Http\Requests\API\UpdateCoursAPIRequest;
 use App\Models\Cours;
 use App\Repositories\CoursRepository;
+use App\Repositories\ImageRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use InfyOm\Generator\Criteria\LimitOffsetCriteria;
@@ -22,10 +23,13 @@ class CoursAPIController extends AppBaseController
 {
     /** @var  CoursRepository */
     private $coursRepository;
+    private $imagesRepository;
 
-    public function __construct(CoursRepository $coursRepo)
+    public function __construct(ImageRepository $imagesRepository,
+                                CoursRepository $coursRepo)
     {
         $this->coursRepository = $coursRepo;
+        $this->imagesRepository = $imagesRepository;
     }
 
     /**
@@ -57,6 +61,7 @@ class CoursAPIController extends AppBaseController
         $input = $request->all();
 
         $cours = $this->coursRepository->create($input);
+        $image = $this->imagesRepository->addImage($request->input(['image_name']),$cours->id,true);
 
         return $this->sendResponse($cours->toArray(), 'Cours saved successfully');
     }
